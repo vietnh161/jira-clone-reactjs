@@ -1,5 +1,4 @@
 import {
-  HashRouter,
   Navigate,
   RouterProvider,
   createBrowserRouter
@@ -42,11 +41,7 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-  return (
-    <HashRouter>
-      <RouterProvider router={router} />{" "}
-    </HashRouter>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;
