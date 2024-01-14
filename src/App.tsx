@@ -1,12 +1,13 @@
 import {
+  HashRouter,
   Navigate,
   RouterProvider,
-  createBrowserRouter,
+  createBrowserRouter
 } from "react-router-dom";
 import "./App.css";
 import MainLayout from "./layout/Index";
-import ProjectPage from "./pages/Project/Index";
 import Board from "./pages/Project/Board/Index";
+import ProjectPage from "./pages/Project/Index";
 import Setting from "./pages/Project/Setting/Index";
 
 const router = createBrowserRouter([
@@ -37,11 +38,15 @@ const router = createBrowserRouter([
   {
     path: "/*",
     element: <Navigate to="project/board" replace />,
-  }
+  },
 ]);
 
 function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <HashRouter>
+      <RouterProvider router={router} />{" "}
+    </HashRouter>
+  );
 }
 
 export default App;
