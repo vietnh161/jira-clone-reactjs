@@ -1,7 +1,7 @@
 {
   "name": "jira-clone-reactjs",
   "version": "0.1.0",
-  "private": false,
+  "private": true,
   "homepage": "",
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
