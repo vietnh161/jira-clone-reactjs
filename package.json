@@ -2,7 +2,6 @@
   "name": "jira-clone-reactjs",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://vietnh161.github.io/jira-clone-reactjs/" ,
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
