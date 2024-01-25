@@ -1,0 +1,31 @@
+$block: ".sidebar-link";
+
+#{$block} {
+  position: relative;
+  display: flex;
+  padding: 8px 12px;
+  border-radius: 3px;
+  cursor: pointer;
+  user-select: none;
+  color: rgb(23, 43, 77);
+  text-decoration: none;
+  &:hover {
+    background: rgb(235, 236, 240);
+  }
+
+  &.active {
+    color: rgb(0, 82, 204);
+    background: rgb(235, 236, 240);
+  }
+
+  &__text {
+    font-size: 15px;
+  }
+
+  &__icon {
+    svg {
+      height: 24px;
+      width: 24px;
+    }
+  }
+}

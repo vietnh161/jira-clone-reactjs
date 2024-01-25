@@ -1,0 +1,14 @@
+@use "sass:string";
+
+@mixin generate-spacing-class($property, $direction: null) {
+  $classname: str-slice($property, 0, 1);
+  @if ($direction) {
+    $classname: $classname + "-" + str-slice($direction, 0, 1);
+    $property: $property + "-" + $direction;
+  }
+  @for $i from 0 through 40 {
+    .#{$classname}-#{$i} {
+      #{$property}: #{$i + "px"};
+    }
+  }
+}

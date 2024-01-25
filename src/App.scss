@@ -1,0 +1,17 @@
+@import "./assets/scss/mixins.scss";
+@import "./assets/scss/util.scss";
+
+@include generate-spacing-class(margin, top);
+@include generate-spacing-class(margin, bottom);
+@include generate-spacing-class(margin, left);
+@include generate-spacing-class(margin, right);
+@include generate-spacing-class(margin);
+@include generate-spacing-class(padding, top);
+@include generate-spacing-class(padding, bottom);
+@include generate-spacing-class(padding, left);
+@include generate-spacing-class(padding, right);
+@include generate-spacing-class(padding);
+
+body * {
+  font-size: 16px;
+}

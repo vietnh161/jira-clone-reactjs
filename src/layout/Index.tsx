@@ -1,7 +1,7 @@
 import { Outlet } from "react-router-dom";
 import "./Layout.scss";
-import Sidebar from "./Sidebar/Index";
-import CollapsedSidebar from "./CollapsedSidebar/Index";
+import Sidebar from "./Sidebar";
+import CollapsedSidebar from "./CollapsedSidebar";
 
 function MainLayout() {
   return (

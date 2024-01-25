@@ -3,17 +3,22 @@ import {
   RouterProvider,
   createBrowserRouter
 } from "react-router-dom";
-import "./App.css";
-import MainLayout from "./layout/Index";
-import Board from "./pages/Project/Board/Index";
-import ProjectPage from "./pages/Project/Index";
-import Setting from "./pages/Project/Setting/Index";
+import "./App.scss";
+import MainLayout from "./layout";
+import ProjectPage from "./pages/Project";
+import Board from "./pages/Project/Board";
+import Setting from "./pages/Project/Setting";
+
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout></MainLayout>,
     children: [
+      {
+        index: true,
+        element: <Navigate to="project" replace />,
+      },
       {
         path: "project",
         element: <ProjectPage />,
