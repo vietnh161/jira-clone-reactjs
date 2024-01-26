@@ -1,11 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 75.76 75.76" width="28">
     <defs>
-        <linearGradient id="linear-gradient" x1="34.64" y1="15.35" x2="19" y2="30.99" gradientUnits="userSpaceOnUse">
+        <linearGradient id="linear-gradient" x1="34.64" y1="15.35" x2="19" y2="30.99"
+            gradientUnits="userSpaceOnUse">
             <stop offset="0.18" stop-color="rgba(0, 82, 204, 0.2)"></stop>
             <stop offset="1" stop-color="#DEEBFE"></stop>
         </linearGradient>
         <linearGradient id="linear-gradient-2" x1="38.78" y1="60.28" x2="54.39" y2="44.67"
-            xlink:href="#linear-gradient"></linearGradient>
+            href="#linear-gradient"></linearGradient>
     </defs>
     <title>Jira Software-blue</title>
     <g id="Layer_2" data-name="Layer 2">
