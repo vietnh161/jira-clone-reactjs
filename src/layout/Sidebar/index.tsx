@@ -22,7 +22,7 @@ const Sidebar: FunctionComponent<SidebarProps> = () => {
     <div className="sidebar">
       <div className="sidebar-top d-flex justify-content-start align-items-center p-t-24 p-b-24">
         <div className="sidebar__logo">
-          <img src={projectLogo} />
+          <img src={projectLogo} alt="project logo"/>
         </div>
         <div className="sidebar__project-info p-l-10 p-t-3">
           <div className="sidebar__project-name">{project.name}</div>
