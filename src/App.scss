@@ -12,6 +12,31 @@
 @include generate-spacing-class(padding, right);
 @include generate-spacing-class(padding);
 
+
+@include icon(chart, 28px, 28px, -16px, -16px);
+@include icon(link, 28px, 28px, -52px, -16px);
+@include icon(setting, 28px, 28px, -87px, -16px);
+@include icon(page, 28px, 28px, -119px, -16px);
+@include icon(about, 28px, 28px, -154px, -16px);
+@include icon(dots-horizontal, 28px, 28px, -188px, -16px);
+@include icon(edit, 28px, 28px, -218px, -16px);
+@include icon(dots-grid, 28px, 28px, -255px, -16px);
+@include icon(search, 28px, 28px, -290px, -16px);
+@include icon(download, 28px, 28px, -16px, -48px);
+@include icon(truck, 28px, 28px, -52px, -48px);
+@include icon(layout-top, 28px, 28px, -87px, -48px);
+@include icon(trash, 28px, 28px, -119px, -48px);
+@include icon(align-left, 28px, 28px, -154px, -48px);
+@include icon(plus, 28px, 28px, -188px, -48px);
+@include icon(dots-vertical, 28px, 28px, -218px, -48px);
+@include icon(copy, 28px, 28px, -255px, -48px);
+@include icon(grid, 28px, 28px, -290px, -48px);
+@include icon(report, 28px, 28px, -16px, -84px);
+@include icon(plus-white, 28px, 28px, -52px, -84px);
+@include icon(search-white, 28px, 28px, -87px, -84px);
+@include icon(about-white, 28px, 28px, -119px, -84px);
+
+
 body * {
   font-size: 16px;
 }

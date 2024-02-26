@@ -12,3 +12,14 @@
     }
   }
 }
+
+@mixin icon($name, $width: 28px, $height: 28px, $xPos, $yPos, $color: #000) {
+  .icon-#{$name} {
+    width: $width;
+    height: $height;
+    background-position: $xPos $yPos;
+    background-repeat: no-repeat;
+    background-image: url('/assets/icons/icons.svg');
+    stroke: $color;
+  }
+}

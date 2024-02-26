@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 import "./Style.scss";
 
 export type SidebarLinkProps = {
-  icon?: ReactElement;
+  icon?: string;
   text?: string;
   href?: string;
   disabled?: boolean;
@@ -19,8 +19,12 @@ export default function Link(props: SidebarLinkProps) {
       })}
       to={props.href || ""}
     >
-      {props.icon && <div className="sidebar-link__icon m-r-12">{props.icon}</div>}
-      {props.children && <div className="sidebar-link__text">{props.children}</div>}
+      {props.icon && (
+        <i className={classNames("sidebar-link__icon m-r-12", props.icon)}></i>
+      )}
+      {props.children && (
+        <div className="sidebar-link__text">{props.children}</div>
+      )}
     </NavLink>
   );
 }

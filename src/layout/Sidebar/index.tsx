@@ -1,14 +1,6 @@
 import { FunctionComponent } from "react";
-import projectLogo from "../../../src/assets/images/duck.png";
 import "./Style.scss";
 import SidebarLink from "./SidebarLink";
-import { ReactComponent as TruckSvg } from "../../assets/icons/truck.svg";
-import { ReactComponent as SettingSvg } from "../../assets/icons/setting.svg";
-import { ReactComponent as StackSvg } from "../../assets/icons/stack.svg";
-import { ReactComponent as PageSvg } from "../../assets/icons/page.svg";
-import { ReactComponent as ChartSvg } from "../../assets/icons/chart.svg";
-import { ReactComponent as ComponentSvg } from "../../assets/icons/component.svg";
-import { ReactComponent as KanbanSvg } from "../../assets/icons/kanban.svg";
 
 interface SidebarProps {}
 
@@ -22,7 +14,10 @@ const Sidebar: FunctionComponent<SidebarProps> = () => {
     <div className="sidebar">
       <div className="sidebar-top d-flex justify-content-start align-items-center p-t-24 p-b-24">
         <div className="sidebar__logo">
-          <img src={projectLogo} />
+          <img
+            src={process.env.PUBLIC_URL + "/logo/duck.png"}
+            alt="project logo"
+          />
         </div>
         <div className="sidebar__project-info p-l-10 p-t-3">
           <div className="sidebar__project-name">{project.name}</div>
@@ -31,26 +26,26 @@ const Sidebar: FunctionComponent<SidebarProps> = () => {
           </div>
         </div>
       </div>
-      <SidebarLink href="project/board" icon={<KanbanSvg />}>
+      <SidebarLink href="project/board" icon="icon-layout-top">
         Kanban Board
       </SidebarLink>
-      <SidebarLink href="project/setting" icon={<SettingSvg />}>
+      <SidebarLink href="project/setting" icon="icon-setting">
         Project Settings
       </SidebarLink>
       <div className="sidebar__link-divider"></div>
-      <SidebarLink href="" icon={<TruckSvg />}>
+      <SidebarLink href="" icon="icon-truck">
         Releases
       </SidebarLink>
-      <SidebarLink href="" icon={<StackSvg />}>
+      <SidebarLink href="" icon="icon-align-left">
         Issues and filters
       </SidebarLink>
-      <SidebarLink href="" icon={<PageSvg />}>
+      <SidebarLink href="" icon="icon-page">
         Pages
       </SidebarLink>
-      <SidebarLink href="" icon={<ChartSvg />}>
+      <SidebarLink href="" icon="icon-report">
         Reports
       </SidebarLink>
-      <SidebarLink href="" icon={<ComponentSvg />}>
+      <SidebarLink href="" icon="icon-grid">
         Components
       </SidebarLink>
     </div>

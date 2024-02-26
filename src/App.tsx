@@ -5,8 +5,8 @@ import {
 } from "react-router-dom";
 import "./App.scss";
 import MainLayout from "./layout";
-import ProjectPage from "./pages/Project";
 import Board from "./pages/Project/Board";
+import ProjectPage from "./pages/Project";
 import Setting from "./pages/Project/Setting";
 
 
