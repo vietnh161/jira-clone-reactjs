@@ -1,9 +1,12 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent, useState } from "react";
 import "./Style.scss";
+import Modal from "../../shared/components/modal";
 
 interface CollapsedSidebarProps {}
 
 const CollapsedSidebar: FunctionComponent<CollapsedSidebarProps> = () => {
+  const [open, setOpen] = useState(true);
+
   return (
     <div className="collapsed-sidebar">
       <div className="collapsed-sidebar__logo m-t-20 m-b-10 p-10 m-l-8">

@@ -1,0 +1,29 @@
+.modal-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(9, 30, 66, 0.54);
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.modal {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  background: rgb(255, 255, 255);
+  max-width: 800px;
+  border-radius: 3px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 5px 10px 0px;
+  padding: 16px;
+  &__close-btn {
+    transform: rotate(45deg);
+    position: absolute;
+    right: 16px;
+    top: 16px;
+    cursor: pointer;
+  }
+}

@@ -15,6 +15,7 @@
 
 @mixin icon($name, $width: 28px, $height: 28px, $xPos, $yPos, $color: #000) {
   .icon-#{$name} {
+    display: inline-block;
     width: $width;
     height: $height;
     background-position: $xPos $yPos;
