@@ -1,12 +1,6 @@
-import {
-  Fragment,
-  FunctionComponent,
-  ReactNode,
-  useEffect,
-  useRef,
-} from "react";
-import "./Style.scss";
+import { Fragment, ReactNode, useEffect, useRef } from "react";
 import ReactDOM from "react-dom";
+import "./Style.scss";
 
 interface ModalProps {
   open: boolean;
@@ -22,15 +16,24 @@ const Modal = (props: ModalProps) => {
   const modalRef = useRef<HTMLDivElement>(null);
 
   const handleClickOutside = (event: Event) => {
-    if (closeOutsideClick && modalRef.current && !modalRef.current.contains(event.target as Node)) {
+    if (
+      closeOutsideClick &&
+      modalRef.current &&
+      !modalRef.current.contains(event.target as Node)
+    ) {
       onClose && onClose();
     }
   };
 
   useEffect(() => {
-    ref.current?.addEventListener("click", handleClickOutside, true);
+    let targetRef: HTMLDivElement | null = null;
+    if (ref.current) {
+      targetRef = ref.current;
+      targetRef.addEventListener("click", handleClickOutside, true);
+    }
     return () => {
-      ref.current?.removeEventListener("click", handleClickOutside, true);
+      if (targetRef)
+        targetRef.removeEventListener("click", handleClickOutside, true);
     };
   });
 

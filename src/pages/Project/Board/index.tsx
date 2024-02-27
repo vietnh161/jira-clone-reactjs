@@ -1,7 +1,5 @@
-import { Fragment, FunctionComponent } from "react";
+import { Fragment } from "react";
 import Breadcrumbs from "../../../shared/components/Breadcrumbs";
-
-interface BoardProps {}
 
 const Board = () => {
   const breadcrumbItems = [

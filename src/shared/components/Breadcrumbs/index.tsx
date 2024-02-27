@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import React, { Fragment, FunctionComponent } from "react";
+import { Fragment } from "react";
 import "./Style.scss";
 
 interface BreadcrumbsProps {
