@@ -1,0 +1,185 @@
+.create-issue-form {
+    padding: 9px 24px 19px;
+
+    &__title {
+        padding-bottom: 15px;
+        font-size: 21px;
+    }
+
+    &__field {
+        margin-top: 20px;
+    }
+
+    &__submit {
+        display: flex;
+        justify-content: flex-end;
+        padding-top: 30px;
+    }
+
+    .field {
+        // &__label {
+        //     display: block;
+        //     padding-bottom: 5px;
+        //     color: rgb(94, 108, 132);
+        //     font-family: CircularStdMedium;
+        //     font-weight: normal;
+        //     font-size: 13px;
+        // }
+
+        // &__description {
+        //     padding-top: 6px;
+        //     color: rgb(94, 108, 132);
+        //     font-size: 12.5px;
+        // }
+
+        // &__error-message {
+        //     margin-top: 6px;
+        //     line-height: 1;
+        //     color: rgb(225, 60, 60);
+        //     font-size: 12.5px;
+        // }
+
+        // &__input {
+        //     position: relative;
+        //     display: inline-block;
+        //     height: 32px;
+        //     width: 100%;
+
+        //     input {
+        //         height: 100%;
+        //         width: 100%;
+        //         padding: 0px 7px;
+        //         border-radius: 3px;
+        //         border: 1px solid rgb(223, 225, 230);
+        //         color: rgb(23, 43, 77);
+        //         background: rgb(244, 245, 247);
+        //         transition: background 0.1s ease 0s;
+        //         font-size: 15px;
+        //     }
+        // }
+
+        &__text-editor {
+            .ql-toolbar.ql-snow {
+                border-radius: 4px 4px 0 0;
+                border: 1px solid rgb(223, 225, 230);
+                border-bottom: none;
+            }
+
+            .ql-container.ql-snow {
+                border-radius: 0px 0px 4px 4px;
+                border-right: 1px solid rgb(223, 225, 230);
+                border-bottom: 1px solid rgb(223, 225, 230);
+                border-left: 1px solid rgb(223, 225, 230);
+                border-image: initial;
+                border-top: none;
+                color: rgb(23, 43, 77);
+                font-size: 15px;
+            }
+
+            .ql-editor {
+                min-height: 110px;
+            }
+        }
+
+        &__select {
+            position: relative;
+
+            .selected-value {
+                border-radius: 4px;
+                cursor: pointer;
+                font-size: 14px;
+                width: 100%;
+                border: 1px solid rgb(223, 225, 230);
+                background: rgb(244, 245, 247);
+                transition: background 0.1s ease 0s;
+                display: flex;
+                align-items: center;
+                min-height: 32px;
+                padding: 5px 5px 5px 10px;
+            }
+
+            .options {
+                z-index: 101;
+                position: absolute;
+                top: 100%;
+                left: 0px;
+                border-radius: 0px 0px 4px 4px;
+                background: rgb(255, 255, 255);
+                box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.31) 0px 0px 1px;
+                width: 100%;
+                padding: 0;
+                .option {
+                    padding: 8px 14px;
+                    word-break: break-word;
+                    cursor: pointer;
+                    list-style: none;
+                    &:last-of-type {
+                        margin-bottom: 6px;
+                    }
+                    &:hover {
+                        background: rgb(210, 229, 254);
+                    }
+                }
+            }
+        }
+
+        &__submit-button {
+            margin-left: 10px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            height: 32px;
+            vertical-align: middle;
+            line-height: 1;
+            padding: 0px 12px;
+            white-space: nowrap;
+            border-radius: 3px;
+            transition: all 0.1s ease 0s;
+            appearance: none;
+            cursor: pointer;
+            user-select: none;
+            font-size: 14.5px;
+            color: rgb(255, 255, 255);
+            background: rgb(0, 82, 204);
+            outline: none;
+            border: none;
+
+            &:hover {
+                background: rgb(0, 94, 235);
+            }
+        }
+
+        &__cancel-button {
+            margin-left: 10px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            height: 32px;
+            vertical-align: middle;
+            line-height: 1;
+            padding: 0px 12px;
+            white-space: nowrap;
+            border-radius: 3px;
+            transition: all 0.1s ease 0s;
+            appearance: none;
+            cursor: pointer;
+            user-select: none;
+            font-size: 14.5px;
+            background: rgb(255, 255, 255);
+            color: rgb(66, 82, 110);
+            font-family: CircularStdBook;
+            font-weight: normal;
+            outline: none;
+            border: none;
+
+            &:hover {
+                background: rgb(235, 236, 240);
+            }
+        }
+    }
+
+    .divider {
+        margin-top: 22px;
+        border-top: 1px solid rgb(223, 225, 230);
+    }
+}

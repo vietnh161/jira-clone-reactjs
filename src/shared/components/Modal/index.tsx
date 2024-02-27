@@ -7,11 +7,19 @@ interface ModalProps {
   title?: string;
   children?: ReactNode;
   closeOutsideClick?: boolean;
+  showCloseButton?: boolean;
   onClose?: () => void;
 }
 
 const Modal = (props: ModalProps) => {
-  const { children, open, title, closeOutsideClick = true, onClose } = props;
+  const {
+    children,
+    open,
+    title,
+    showCloseButton = true,
+    closeOutsideClick = true,
+    onClose,
+  } = props;
   const ref = useRef<HTMLDivElement>(null);
   const modalRef = useRef<HTMLDivElement>(null);
 
@@ -43,7 +51,9 @@ const Modal = (props: ModalProps) => {
         ReactDOM.createPortal(
           <div className="modal-wrapper" ref={ref}>
             <div className="modal" ref={modalRef}>
-              <i className="modal__close-btn icon-plus" onClick={onClose}></i>
+              {showCloseButton && (
+                <i className="modal__close-btn icon-plus" onClick={onClose}></i>
+              )}
               {title && <div className="modal__title">{title}</div>}
               {children && <div className="modal__body">{children}</div>}
             </div>

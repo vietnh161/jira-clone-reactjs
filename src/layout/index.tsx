@@ -1,9 +1,9 @@
+import { useState } from "react";
 import { Outlet } from "react-router-dom";
+import CreateIssueModal from "../pages/CreateIssueModal";
+import CollapsedSidebar from "./CollapsedSidebar";
 import "./Layout.scss";
 import Sidebar from "./Sidebar";
-import CollapsedSidebar from "./CollapsedSidebar";
-import Modal from "../shared/components/Modal";
-import { useState } from "react";
 
 function MainLayout() {
   const [open, setOpen] = useState(true);
@@ -14,9 +14,12 @@ function MainLayout() {
       <div className="main-content">
         <Outlet />
 
-        <Modal open={open}  title="My modal" onClose={() => {setOpen(!open)}}>
-          Hello
-        </Modal>
+        <CreateIssueModal
+          open={open}
+          onClose={() => {
+            setOpen(!open);
+          }}
+        />
       </div>
     </div>
   );
