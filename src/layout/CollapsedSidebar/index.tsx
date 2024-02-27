@@ -1,6 +1,6 @@
 import { FunctionComponent, useState } from "react";
 import "./Style.scss";
-import Modal from "../../shared/components/modal";
+import Modal from "../../shared/components/Modal";
 
 interface CollapsedSidebarProps {}
 

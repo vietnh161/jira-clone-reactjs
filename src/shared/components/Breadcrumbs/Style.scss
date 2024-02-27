@@ -1,0 +1,25 @@
+.breadcrumb {
+  font-size: 15px;
+  margin-bottom: 8px;
+  &__item {
+    color: rgb(94, 108, 132);
+    cursor: pointer;
+    user-select: none;
+    text-decoration: none;
+
+    &:hover {
+      color: rgb(82, 95, 116);
+    }
+
+    &::after {
+      content: '/';
+      margin: 0 8px;
+    }
+
+    &.last-item {
+      &::after {
+        content: none;
+      }
+    }
+  }
+}

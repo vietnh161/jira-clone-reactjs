@@ -2,7 +2,7 @@ import { Outlet } from "react-router-dom";
 import "./Layout.scss";
 import Sidebar from "./Sidebar";
 import CollapsedSidebar from "./CollapsedSidebar";
-import Modal from "../shared/components/modal";
+import Modal from "../shared/components/Modal";
 import { useState } from "react";
 
 function MainLayout() {

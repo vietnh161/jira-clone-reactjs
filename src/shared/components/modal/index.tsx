@@ -1,13 +1,14 @@
 import {
-    Fragment,
-    FunctionComponent,
-    ReactNode,
-    useEffect,
-    useRef,
+  Fragment,
+  FunctionComponent,
+  ReactNode,
+  useEffect,
+  useRef,
 } from "react";
 import "./Style.scss";
+import ReactDOM from "react-dom";
 
-interface Props {
+interface ModalProps {
   open: boolean;
   title?: string;
   children?: ReactNode;
@@ -15,16 +16,14 @@ interface Props {
   onClose?: () => void;
 }
 
-const Modal: FunctionComponent<Props> = (props) => {
-  const { children, open, title, closeOutsideClick, onClose } = props;
+const Modal = (props: ModalProps) => {
+  const { children, open, title, closeOutsideClick = true, onClose } = props;
   const ref = useRef<HTMLDivElement>(null);
   const modalRef = useRef<HTMLDivElement>(null);
 
   const handleClickOutside = (event: Event) => {
-    console.log(123);
-    
-    if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
-        onClose && onClose();
+    if (closeOutsideClick && modalRef.current && !modalRef.current.contains(event.target as Node)) {
+      onClose && onClose();
     }
   };
 
@@ -34,17 +33,20 @@ const Modal: FunctionComponent<Props> = (props) => {
       ref.current?.removeEventListener("click", handleClickOutside, true);
     };
   });
+
   return (
     <Fragment>
-      {open && (
-        <div className="modal-wrapper" ref={ref}>
-          <div className="modal"  ref={modalRef}>
-            <i className="modal__close-btn icon-plus" onClick={onClose}></i>
-            {title && <div className="modal__title">{title}</div>}
-            {children && <div className="modal__body">{children}</div>}
-          </div>
-        </div>
-      )}
+      {open &&
+        ReactDOM.createPortal(
+          <div className="modal-wrapper" ref={ref}>
+            <div className="modal" ref={modalRef}>
+              <i className="modal__close-btn icon-plus" onClick={onClose}></i>
+              {title && <div className="modal__title">{title}</div>}
+              {children && <div className="modal__body">{children}</div>}
+            </div>
+          </div>,
+          document.body
+        )}
     </Fragment>
   );
 };

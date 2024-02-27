@@ -1,10 +1,26 @@
 import { Fragment, FunctionComponent } from "react";
+import Breadcrumbs from "../../../shared/components/Breadcrumbs";
 
-interface Props {}
+interface BoardProps {}
 
-const Board: FunctionComponent<Props> = () => {
+const Board = () => {
+  const breadcrumbItems = [
+    {
+      href: "",
+      text: "Projects",
+    },
+    {
+      href: "",
+      text: "Ducky Up",
+    },
+    {
+      href: "",
+      text: "Kanban Board",
+    },
+  ];
   return (
     <Fragment>
+      <Breadcrumbs items={breadcrumbItems}></Breadcrumbs>
       <div>Board page</div>
     </Fragment>
   );
