@@ -1,0 +1,43 @@
+.form-field {
+
+  &__input {
+    position: relative;
+    display: inline-block;
+    height: 32px;
+    width: 100%;
+  }
+
+  input {
+    height: 100%;
+    width: 100%;
+    padding: 0px 7px;
+    border-radius: 3px;
+    border: 1px solid rgb(223, 225, 230);
+    color: rgb(23, 43, 77);
+    background: rgb(244, 245, 247);
+    transition: background 0.1s ease 0s;
+    font-size: 15px;
+  }
+
+  &__label {
+    display: block;
+    padding-bottom: 5px;
+    color: rgb(94, 108, 132);
+    font-family: CircularStdMedium;
+    font-weight: normal;
+    font-size: 13px;
+  }
+
+  &__description {
+    padding-top: 6px;
+    color: rgb(94, 108, 132);
+    font-size: 12.5px;
+  }
+
+  &__error-message {
+    margin-top: 6px;
+    line-height: 1;
+    color: rgb(225, 60, 60);
+    font-size: 12.5px;
+  }
+}
