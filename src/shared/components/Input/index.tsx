@@ -1,16 +1,30 @@
-import { ErrorMessage, useField } from "formik";
+import { FieldInputProps } from "formik";
+import { FC, InputHTMLAttributes } from "react";
+import classNames from "classnames";
 import "./Style.scss";
 
 interface InputProps {
   label?: string;
   description?: string;
+  errorMessage?: string;
+  field?: FieldInputProps<any>;
+  componentClass?: string;
 }
 
-const Input = ({...props}: any) => {
-  const { label, description } = props;
-  const [field] = useField(props);
+const Input: FC<InputProps & InputHTMLAttributes<HTMLInputElement>> = ({
+  label,
+  description,
+  errorMessage,
+  field,
+  componentClass,
+  ...props
+}) => {
   return (
-    <div className="form-field">
+    <div
+      className={classNames("form-field", componentClass, {
+        invalid: !!errorMessage,
+      })}
+    >
       {label && (
         <label className="form-field__label" htmlFor={props.id || props.name}>
           {label}
@@ -22,7 +36,9 @@ const Input = ({...props}: any) => {
       {description && (
         <div className="form-field__description">{description}</div>
       )}
-      {/* <ErrorMessage name={props.name} className="form-field__error-message" /> */}
+      {errorMessage && (
+        <div className="form-field__error-message">{errorMessage}</div>
+      )}
     </div>
   );
 };

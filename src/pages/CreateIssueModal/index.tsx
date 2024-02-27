@@ -1,4 +1,12 @@
-import { useFormik } from "formik";
+import {
+  Field,
+  FieldProps,
+  Form,
+  Formik,
+  FormikConfig,
+  FormikProps,
+  useFormik,
+} from "formik";
 import * as Yup from "yup";
 import ReactQuill from "react-quill";
 import Modal from "../../shared/components/Modal";
@@ -13,8 +21,7 @@ interface CreateIssueModalProps {
 
 const CreateIssueModal = (props: CreateIssueModalProps) => {
   const { open, onClose } = props;
-
-  const createForm = useFormik({
+  const config: FormikConfig<any> = {
     initialValues: {
       issueType: "",
       shortSummary: "",
@@ -24,93 +31,35 @@ const CreateIssueModal = (props: CreateIssueModalProps) => {
       priority: 1,
     },
     validationSchema: Yup.object({
-      issueType: Yup.string().required("Required"),
+      // issueType: Yup.string().required("Required"),
       shortSummary: Yup.string().required("Required"),
-      description: Yup.string().required("Required"),
+      // description: Yup.string().required("Required"),
     }),
     onSubmit: (values) => {
-      console.log(values);
+      alert(values);
     },
-  });
+  };
+  const createForm = useFormik(config);
   return (
     <Modal open={open} showCloseButton={false} onClose={onClose}>
       <div className="create-issue-form">
         <div className="create-issue-form__title">Create issue</div>
         <form onSubmit={createForm.handleSubmit}>
           <div className="create-issue-form__body">
-            {/* <div className="create-issue-form__field">
-              <label className="field__label" htmlFor="issueType">
-                Issue Type
-              </label>
-              <div className="field__select">
-                <div className="selected-value">
-                  {createForm.values.issueType}
-                </div>
-                <ul className="options">
-                  <li
-                    className="option"
-                    onClick={() =>
-                      createForm.setFieldValue("issueType", "Task")
-                    }
-                  >
-                    Task
-                  </li>
-                  <li
-                    className="option"
-                    onClick={() => createForm.setFieldValue("issueType", "Bug")}
-                  >
-                    Bug
-                  </li>
-                  <li
-                    className="option"
-                    onClick={() =>
-                      createForm.setFieldValue("issueType", "Story")
-                    }
-                  >
-                    Story
-                  </li>
-                </ul>
-              </div>
-              <div className="field__description">
-                Start typing to get a list of possible matches.
-              </div>
-              {createForm.touched.shortSummary &&
-              createForm.errors.shortSummary ? (
-                <div className="field__error-message">
-                  {createForm.errors.shortSummary}
-                </div>
-              ) : null}
-            </div> */}
             <div className="divider"></div>
-            {/* <div className="create-issue-form__field">
-              <label className="field__label" htmlFor="shortSummary">
-                Short Summary
-              </label>
-              <div className="field__input">
-                <input
-                  id="shortSummary"
-                  name="shortSummary"
-                  type="text"
-                  onChange={createForm.handleChange}
-                  value={createForm.values.shortSummary}
-                />
-              </div>
-              <div className="field__description">
-                Concisely summarize the issue in one or two sentences.
-              </div>
-              {createForm.touched.shortSummary &&
-              createForm.errors.shortSummary ? (
-                <div className="field__error-message">
-                  {createForm.errors.shortSummary}
-                </div>
-              ) : null}
-            </div> */}
             <Input
+              componentClass="m-t-20"
               label="Short Summary"
               description="Concisely summarize the issue in one or two sentences."
               id="shortSummary"
               name="shortSummary"
               type="text"
+              field={createForm.getFieldProps("shortSummary")}
+              errorMessage={
+                createForm.touched.shortSummary
+                  ? createForm.getFieldMeta("shortSummary").error
+                  : ""
+              }
             ></Input>
             {/* <div className="create-issue-form__field">
               <label className="field__label" htmlFor="description">
@@ -150,6 +99,43 @@ const CreateIssueModal = (props: CreateIssueModalProps) => {
             </button>
           </div>
         </form>
+
+        <div className="create-issue-form__title">Another form</div>
+        <Formik {...config}>
+          {(props: FormikProps<any>) => (
+            <Form>
+              <Field name="shortSummary">
+                {({
+                  field,
+                  form: { touched, errors },
+                  meta,
+                }: FieldProps<any>) => (
+                  <Input
+                    componentClass="m-t-20"
+                    label="Short Summary"
+                    description="Concisely summarize the issue in one or two sentences."
+                    id="shortSummary"
+                    name="shortSummary"
+                    type="text"
+                    field={field}
+                    errorMessage={meta.touched ? meta.error : ""}
+                  ></Input>
+                )}
+              </Field>
+
+              <button className="field__submit-button" type="submit">
+                Submit
+              </button>
+              <button
+                className="field__cancel-button"
+                type="button"
+                onClick={onClose}
+              >
+                Cancel
+              </button>
+            </Form>
+          )}
+        </Formik>
       </div>
     </Modal>
   );
