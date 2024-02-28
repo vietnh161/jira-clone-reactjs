@@ -12,6 +12,8 @@ import Input from "../../shared/components/Input";
 import Modal from "../../shared/components/Modal";
 import TextEditor from "../../shared/components/TextEditor";
 import "./Style.scss";
+import Select from "../../shared/components/Select";
+import { useState } from "react";
 
 interface CreateIssueModalProps {
   open: boolean;
@@ -19,10 +21,12 @@ interface CreateIssueModalProps {
 }
 
 const CreateIssueModal = (props: CreateIssueModalProps) => {
+  const [val, setVal] = useState<string | number>(1);
+  const [open1, setopen1] = useState<boolean>();
   const { open, onClose } = props;
   const config: FormikConfig<any> = {
     initialValues: {
-      issueType: "",
+      issueType: 3,
       shortSummary: "",
       description: "",
       reporter: {},
@@ -45,6 +49,24 @@ const CreateIssueModal = (props: CreateIssueModalProps) => {
           <Formik {...config}>
             {(props: FormikProps<any>) => (
               <Form>
+                <Field name="issueType">
+                  {({ field, meta }: FieldProps<any>) => (
+                    <Select
+                      value={val}
+                      open={open1}
+                      options={[
+                        { value: 1, label: "Task" },
+                        { value: 2, label: "Bug" },
+                        { value: 3, label: "Story" },
+                      ]}
+                      field={field}
+                      onChange={(val) => setVal(val.value)}
+                      onDropdownVisibleChange={(val) => setopen1(val)}
+                      errorMessage={meta.touched ? meta.error : ""}
+                    ></Select>
+                  )}
+                </Field>
+
                 <Field name="shortSummary">
                   {({ field, meta }: FieldProps<any>) => (
                     <Input
