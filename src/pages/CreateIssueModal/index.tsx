@@ -10,6 +10,7 @@ import "react-quill/dist/quill.snow.css";
 import * as Yup from "yup";
 import Input from "../../shared/components/Input";
 import Modal from "../../shared/components/Modal";
+import TextEditor from "../../shared/components/TextEditor";
 import "./Style.scss";
 
 interface CreateIssueModalProps {
@@ -31,10 +32,9 @@ const CreateIssueModal = (props: CreateIssueModalProps) => {
     validationSchema: Yup.object({
       // issueType: Yup.string().required("Required"),
       shortSummary: Yup.string().required("Required"),
-      // description: Yup.string().required("Required"),
     }),
     onSubmit: (values) => {
-      alert(values);
+      console.log(values);
     },
   };
   return (
@@ -48,7 +48,7 @@ const CreateIssueModal = (props: CreateIssueModalProps) => {
                 <Field name="shortSummary">
                   {({ field, meta }: FieldProps<any>) => (
                     <Input
-                      componentClass="m-t-20"
+                      classes="m-t-20"
                       label="Short Summary"
                       description="Concisely summarize the issue in one or two sentences."
                       id="shortSummary"
@@ -57,6 +57,18 @@ const CreateIssueModal = (props: CreateIssueModalProps) => {
                       field={field}
                       errorMessage={meta.touched ? meta.error : ""}
                     ></Input>
+                  )}
+                </Field>
+                <Field name="description">
+                  {({ field, meta }: FieldProps<any>) => (
+                    <TextEditor
+                      classes="m-t-20"
+                      label="Description"
+                      description="Describe the issue in as much detail as you'd like."
+                      id="description"
+                      field={field}
+                      errorMessage={meta.touched ? meta.error : ""}
+                    ></TextEditor>
                   )}
                 </Field>
                 <div className="create-issue-form__submit">

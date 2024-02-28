@@ -8,7 +8,7 @@ interface InputProps {
   description?: string;
   errorMessage?: string;
   field?: FieldInputProps<any>;
-  componentClass?: string;
+  classes?: string;
 }
 
 const Input: FC<InputProps & InputHTMLAttributes<HTMLInputElement>> = ({
@@ -16,13 +16,15 @@ const Input: FC<InputProps & InputHTMLAttributes<HTMLInputElement>> = ({
   description,
   errorMessage,
   field,
-  componentClass,
+  classes,
+  disabled,
   ...props
 }) => {
   return (
     <div
-      className={classNames("form-field", componentClass, {
+      className={classNames("form-field", classes, {
         invalid: !!errorMessage,
+        disabled: disabled,
       })}
     >
       {label && (

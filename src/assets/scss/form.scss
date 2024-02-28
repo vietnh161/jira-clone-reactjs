@@ -1,0 +1,23 @@
+.form-field {
+    &__label {
+      display: block;
+      padding-bottom: 5px;
+      color: rgb(94, 108, 132);
+      font-family: CircularStdMedium;
+      font-weight: normal;
+      font-size: 13px;
+    }
+  
+    &__description {
+      padding-top: 6px;
+      color: rgb(94, 108, 132);
+      font-size: 12.5px;
+    }
+  
+    &__error-message {
+      margin-top: 6px;
+      line-height: 1;
+      color: rgb(225, 60, 60);
+      font-size: 12.5px;
+    }
+}
