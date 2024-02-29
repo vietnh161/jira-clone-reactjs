@@ -8,6 +8,10 @@
   background: rgb(244, 245, 247);
   transition: background 0.1s ease 0s;
 
+  &.invalid {
+    border-color: rgb(225, 60, 60);
+  }
+
   &__value {
     display: flex;
     -webkit-box-align: center;

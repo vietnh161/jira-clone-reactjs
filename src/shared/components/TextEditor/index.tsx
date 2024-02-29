@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import { FC, useEffect, useRef } from "react";
+import { FC, useEffect, useRef, useState } from "react";
 import ReactQuill, { ReactQuillProps } from "react-quill";
 import "./Style.scss";
 
@@ -19,6 +19,8 @@ const TextEditor: FC<TextEditorProps & ReactQuillProps> = ({
   onBlur,
   ...props
 }) => {
+  const [isFocus, setIsFocus] = useState(false);
+
   const ref = useRef<ReactQuill>(null);
   useEffect(() => {
     if (!name || !ref.current) return;
@@ -28,7 +30,11 @@ const TextEditor: FC<TextEditorProps & ReactQuillProps> = ({
 
   return (
     <div
-      className={classNames("text-editor", classes, { disabled, invalid })}
+      className={classNames("text-editor", classes, {
+        disabled,
+        invalid,
+        focus: isFocus,
+      })}
       onBlur={onBlur}
     >
       <ReactQuill
@@ -37,6 +43,8 @@ const TextEditor: FC<TextEditorProps & ReactQuillProps> = ({
         {...props}
         ref={ref}
         readOnly={disabled}
+        onFocus={() => setIsFocus(true)}
+        onBlur={() => setIsFocus(false)}
       />
     </div>
   );

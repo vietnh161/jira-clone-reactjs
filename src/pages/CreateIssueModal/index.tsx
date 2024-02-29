@@ -1,9 +1,4 @@
-import {
-  Form,
-  Formik,
-  FormikConfig,
-  FormikProps
-} from "formik";
+import { Form, Formik, FormikConfig, FormikProps } from "formik";
 import "react-quill/dist/quill.snow.css";
 import * as Yup from "yup";
 import FormField from "../../shared/components/FormField";
@@ -22,12 +17,12 @@ const CreateIssueModal = (props: CreateIssueModalProps) => {
   const { open, onClose } = props;
   const config: FormikConfig<any> = {
     initialValues: {
-      issueType: "",
+      issueType: 1,
       shortSummary: "",
       description: "",
       reporter: {},
       assignees: [],
-      priority: 1,
+      priority: 3,
     },
     validationSchema: Yup.object({
       issueType: Yup.string().required("Required"),
@@ -46,7 +41,6 @@ const CreateIssueModal = (props: CreateIssueModalProps) => {
           <Formik {...config}>
             {(_: FormikProps<any>) => (
               <Form>
-
                 <FormField
                   name="issueType"
                   label="Issue Type"
@@ -58,7 +52,6 @@ const CreateIssueModal = (props: CreateIssueModalProps) => {
                       { value: 2, label: "Bug" },
                       { value: 3, label: "Story" },
                     ]}
-                    
                   ></Select>
                 </FormField>
 
@@ -67,7 +60,7 @@ const CreateIssueModal = (props: CreateIssueModalProps) => {
                   label="Short Summary"
                   description="Concisely summarize the issue in one or two sentences."
                 >
-                  <Input type="text" ></Input>
+                  <Input type="text"></Input>
                 </FormField>
 
                 <FormField
@@ -75,8 +68,58 @@ const CreateIssueModal = (props: CreateIssueModalProps) => {
                   label="Description"
                   description="Describe the issue in as much detail as you'd like."
                 >
-                  <TextEditor disabled></TextEditor>
+                  <TextEditor></TextEditor>
                 </FormField>
+
+                <FormField
+                  name="reporter"
+                  label="Reporter"
+                >
+                  <Select
+                    options={[
+                      { value: 1, label: "Josh Dayton" },
+                      { value: 2, label: "Bryan Blythe" },
+                      { value: 3, label: "Bartholomew Brooklyn" },
+                      { value: 4, label: "Ramsey Shaw" },
+                      { value: 5, label: "Hugh Peter" },
+                    ]}
+                  ></Select>
+                </FormField>
+
+                <FormField
+                  name="assignees"
+                  label="Asignees"
+                >
+                  <Select
+                    options={[
+                      { value: 1, label: "Bysshe Newt" },
+                      { value: 2, label: "Buck Crispin" },
+                      { value: 3, label: "Xavior Garrett" },
+                      { value: 4, label: "Glanville Chaz" },
+                      { value: 5, label: "Raven Keaton" },
+                      { value: 6, label: "Shayne Josiah" },
+                      { value: 7, label: "Rylie Herman" },
+                      { value: 8, label: "Azure Lachlan" },
+                      { value: 9, label: "Bob Rob" },
+                      { value: 10, label: "Zander Sonny" },
+                    ]}
+                  ></Select>
+                </FormField>
+
+                <FormField
+                  name="priority"
+                  label="Priority"
+                >
+                  <Select
+                    options={[
+                      { value: 1, label: "Highest" },
+                      { value: 2, label: "High" },
+                      { value: 3, label: "Low" },
+                      { value: 4, label: "Lowest" },
+                    ]}
+                  ></Select>
+                </FormField>
+
                 <div className="create-issue-form__submit">
                   <button className="field__submit-button" type="submit">
                     Submit

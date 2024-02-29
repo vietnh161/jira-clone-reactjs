@@ -1,7 +1,20 @@
 .text-editor {
+    &.focus {
+        .ql-toolbar.ql-snow {
+            background: rgb(255, 255, 255);
+            border-color: rgb(76, 154, 255);
+        }
+
+        .ql-container.ql-snow {
+            background: rgb(255, 255, 255);
+            border-color: rgb(76, 154, 255);
+        }
+    }
+
     .ql-toolbar.ql-snow {
         border-radius: 4px 4px 0 0;
         border: 1px solid rgb(223, 225, 230);
+        background: rgb(244, 245, 247);
         border-bottom: none;
     }
 
@@ -13,10 +26,23 @@
         border-image: initial;
         border-top: none;
         color: rgb(23, 43, 77);
+        background: rgb(244, 245, 247);
         font-size: 15px;
     }
 
+
+
     .ql-editor {
         min-height: 110px;
+    }
+
+    &.invalid {
+        .ql-toolbar.ql-snow {
+            border-color: rgb(225, 60, 60);
+        }
+
+        .ql-container.ql-snow {
+            border-color: rgb(225, 60, 60);
+        }
     }
 }

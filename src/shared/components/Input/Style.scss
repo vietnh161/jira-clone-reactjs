@@ -14,5 +14,23 @@
     background: rgb(244, 245, 247);
     transition: background 0.1s ease 0s;
     font-size: 15px;
+    outline: none;
+
+    &:focus {
+      background: rgb(255, 255, 255);
+      border-color: rgb(76, 154, 255);
+    }
   }
+
+  &.invalid {
+    input {
+      border-color: rgb(225, 60, 60);
+
+      &:focus {
+        border-color: rgb(225, 60, 60);
+        outline: none;
+      }
+    }
+  }
+
 }
