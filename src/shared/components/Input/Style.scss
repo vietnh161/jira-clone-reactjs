@@ -1,10 +1,8 @@
-.form-field {
-  &__input {
-    position: relative;
-    display: inline-block;
-    height: 32px;
-    width: 100%;
-  }
+.input {
+  position: relative;
+  display: inline-block;
+  height: 32px;
+  width: 100%;
 
   input {
     height: 100%;
