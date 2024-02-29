@@ -1,6 +1,5 @@
 @import "./assets/scss/mixins.scss";
 @import "./assets/scss/util.scss";
-@import "./assets/scss/form.scss";
 
 @include generate-spacing-class(margin, top);
 @include generate-spacing-class(margin, bottom);

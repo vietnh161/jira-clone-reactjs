@@ -1,46 +1,30 @@
-import { FieldInputProps } from "formik";
-import { FC, InputHTMLAttributes } from "react";
 import classNames from "classnames";
+import { FC, InputHTMLAttributes } from "react";
 import "./Style.scss";
 
 interface InputProps {
-  label?: string;
-  description?: string;
-  errorMessage?: string;
-  field?: FieldInputProps<any>;
   classes?: string;
+  invalid?: boolean;
+  onChange?: (value: string) => void;
 }
 
 const Input: FC<InputProps & InputHTMLAttributes<HTMLInputElement>> = ({
-  label,
-  description,
-  errorMessage,
-  field,
   classes,
-  disabled,
+  invalid,
+  onChange,
   ...props
 }) => {
   return (
     <div
-      className={classNames("form-field", classes, {
-        invalid: !!errorMessage,
-        disabled: disabled,
+      className={classNames("input", classes, {
+        disabled: props.disabled,
+        invalid: invalid,
       })}
     >
-      {label && (
-        <label className="form-field__label" htmlFor={props.id || props.name}>
-          {label}
-        </label>
-      )}
-      <div className="form-field__input">
-        <input {...field} {...props} />
-      </div>
-      {description && (
-        <div className="form-field__description">{description}</div>
-      )}
-      {errorMessage && (
-        <div className="form-field__error-message">{errorMessage}</div>
-      )}
+      <input
+        {...props}
+        onChange={(e) => onChange && onChange(e.target.value)}
+      />
     </div>
   );
 };

@@ -1,58 +1,43 @@
 import classNames from "classnames";
-import { FieldInputProps } from "formik";
-import { FC } from "react";
+import { FC, useEffect, useRef } from "react";
 import ReactQuill, { ReactQuillProps } from "react-quill";
 import "./Style.scss";
 
 interface TextEditorProps {
-  label?: string;
-  description?: string;
-  errorMessage?: string;
-  field?: FieldInputProps<any>;
   classes?: string;
-  placeholder?: string;
+  name?: string;
   disabled?: boolean;
+  invalid?: boolean;
+  onBlur?: (e: any) => void;
 }
 
 const TextEditor: FC<TextEditorProps & ReactQuillProps> = ({
-  label,
-  description,
-  errorMessage,
-  field,
   classes,
-  id,
+  name,
   disabled,
+  invalid,
+  onBlur,
   ...props
 }) => {
-  const value = field ? field.value : (props.value || props.defaultValue);
-  const onChangeFn = field ? field.onChange(field.name) : props.onChange;
+  const ref = useRef<ReactQuill>(null);
+  useEffect(() => {
+    if (!name || !ref.current) return;
+    const el = ref.current.getEditingArea().querySelector(".ql-editor");
+    if (el) el.id = name;
+  }, [name]);
+
   return (
     <div
-      className={classNames("form-field", classes, {
-        invalid: !!errorMessage,
-        disabled: !!disabled,
-      })}
+      className={classNames("text-editor", classes, { disabled, invalid })}
+      onBlur={onBlur}
     >
-      {label && (
-        <label className="form-field__label" htmlFor={id}>
-          {label}
-        </label>
-      )}
-      <div className="form-field__text-editor">
-        <ReactQuill
-          theme="snow"
-          id={id}
-          value={value}
-          onChange={onChangeFn}
-          {...props}
-        />
-      </div>
-      {description && (
-        <div className="form-field__description">{description}</div>
-      )}
-      {errorMessage && (
-        <div className="form-field__error-message">{errorMessage}</div>
-      )}
+      <ReactQuill
+        id={name}
+        theme="snow"
+        {...props}
+        ref={ref}
+        readOnly={disabled}
+      />
     </div>
   );
 };
