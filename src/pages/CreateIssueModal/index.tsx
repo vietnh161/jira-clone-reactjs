@@ -7,6 +7,8 @@ import Modal from "../../shared/components/Modal";
 import Select from "../../shared/components/Select";
 import TextEditor from "../../shared/components/TextEditor";
 import "./Style.scss";
+import MultipleSelect from "../../shared/components/MultipleSelect";
+import { useState } from "react";
 
 interface CreateIssueModalProps {
   open: boolean;
@@ -14,6 +16,7 @@ interface CreateIssueModalProps {
 }
 
 const CreateIssueModal = (props: CreateIssueModalProps) => {
+  const [val, setVal] = useState<any>([1]);
   const { open, onClose } = props;
   const config: FormikConfig<any> = {
     initialValues: {
@@ -22,12 +25,13 @@ const CreateIssueModal = (props: CreateIssueModalProps) => {
       description: "",
       reporter: {},
       assignees: [],
-      priority: 3,
+      priority: null,
     },
     validationSchema: Yup.object({
       issueType: Yup.string().required("Required"),
       shortSummary: Yup.string().required("Required"),
       description: Yup.string().required("Required"),
+      priority: Yup.number().required("Required"),
     }),
     onSubmit: (values) => {
       console.log(values);
@@ -71,10 +75,7 @@ const CreateIssueModal = (props: CreateIssueModalProps) => {
                   <TextEditor></TextEditor>
                 </FormField>
 
-                <FormField
-                  name="reporter"
-                  label="Reporter"
-                >
+                <FormField name="reporter" label="Reporter">
                   <Select
                     options={[
                       { value: 1, label: "Josh Dayton" },
@@ -82,15 +83,15 @@ const CreateIssueModal = (props: CreateIssueModalProps) => {
                       { value: 3, label: "Bartholomew Brooklyn" },
                       { value: 4, label: "Ramsey Shaw" },
                       { value: 5, label: "Hugh Peter" },
+                      { value: 6, label: "Josh Blythe" },
+                      { value: 7, label: "Bartholomew Dayton" },
+                      { value: 8, label: "Ramsey Brooklyn" },
                     ]}
                   ></Select>
                 </FormField>
 
-                <FormField
-                  name="assignees"
-                  label="Asignees"
-                >
-                  <Select
+                <FormField name="assignees" label="Asignees">
+                  <MultipleSelect
                     options={[
                       { value: 1, label: "Bysshe Newt" },
                       { value: 2, label: "Buck Crispin" },
@@ -103,13 +104,10 @@ const CreateIssueModal = (props: CreateIssueModalProps) => {
                       { value: 9, label: "Bob Rob" },
                       { value: 10, label: "Zander Sonny" },
                     ]}
-                  ></Select>
+                  ></MultipleSelect>
                 </FormField>
 
-                <FormField
-                  name="priority"
-                  label="Priority"
-                >
+                <FormField name="priority" label="Priority">
                   <Select
                     options={[
                       { value: 1, label: "Highest" },

@@ -1,24 +1,24 @@
 import classNames from "classnames";
-import { FC, ReactNode, useRef, useState } from "react";
+import { FC, ReactNode, useEffect, useMemo, useRef, useState } from "react";
 import "./Style.scss";
 import useOnOutsideClick from "../../hooks/onOutsideClick";
 
-interface SelectOption {
+export interface SelectOption {
   label: React.ReactNode;
   value: string | number;
 }
 
-interface SelectProps {
+export interface SelectProps {
   classes?: string;
   placeholder?: string;
   disabled?: boolean;
   invalid?: boolean;
   open?: boolean;
-  value?: string | number | SelectOption;
+  value?: string | number;
   options?: SelectOption[];
   renderValue?: (value: SelectOption) => ReactNode;
   onDropdownVisibleChange?: (open: boolean) => void;
-  onChange?: (value: string | number | SelectOption) => void;
+  onChange?: (value: string | number, option: SelectOption) => void;
 }
 
 const Select: FC<SelectProps> = ({
@@ -34,14 +34,22 @@ const Select: FC<SelectProps> = ({
   onDropdownVisibleChange,
 }) => {
   const [localOpen, setLocalOpen] = useState(false);
+  const [localValue, setLocalValue] = useState<string | number>();
   const menuRef = useRef<HTMLDivElement>(null);
 
   useOnOutsideClick(menuRef, () => {
     showMenu(false);
   });
 
+  useEffect(() => {
+    if (value === undefined) {
+      setLocalValue(undefined);
+    }
+  }, [value]);
+
   const getValue = () => {
-    return value != null && typeof value === "object" ? value.value : value;
+    if (value === undefined) return localValue;
+    return value;
   };
 
   const showMenu = (val?: boolean) => {
@@ -50,7 +58,7 @@ const Select: FC<SelectProps> = ({
   };
 
   const displaySelectValue = () => {
-    if (value === undefined) {
+    if (getValue() === undefined) {
       return (
         placeholder && (
           <span className="select__placeholder">{placeholder}</span>
@@ -58,29 +66,26 @@ const Select: FC<SelectProps> = ({
       );
     } else {
       const itemSelected = options?.find((item) => item.value === getValue());
-      if (!itemSelected)
+      if (itemSelected)
         return (
-          placeholder && (
-            <span className="select__placeholder">{placeholder}</span>
-          )
+          <span className="select__value-text">
+            {renderValue ? renderValue(itemSelected) : itemSelected.label}
+          </span>
         );
-      return (
-        <span className="select__value-text">
-          {renderValue ? renderValue(itemSelected) : itemSelected.label}
-        </span>
-      );
     }
+
+    return (
+      placeholder && <span className="select__placeholder">{placeholder}</span>
+    );
   };
 
   const handleClickOption = (option: SelectOption) => {
     if (disabled) return;
     showMenu(false);
-    if (!onChange) return;
-    if (value !== null && typeof value === "object") {
-      onChange(option);
-    } else {
-      onChange(option.value);
+    if (value === undefined) {
+      setLocalValue(option.value);
     }
+    onChange && onChange(option.value, option);
   };
 
   return (
